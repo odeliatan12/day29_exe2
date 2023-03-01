@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .error{
+        color: red;
+    }
+</style>
+<body>
+    <h4>Customer Information</h4>
+    <form 
+        action="#"
+        data-th-action="@{/customers/information/postCustomerInfo}"
+        method="Post"
+        data-th-object="${customers}"
+    >
+        <table>
+            <tr>
+                <td>Customer Name:</td>
+                <td>
+                    <input data-th-field="*{name}"></input>
+                    <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}" data-th-errorclass="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email Address:</td>
+                <td>
+                    <input data-th-field="*{emailAddress}"></input>
+                    <span data-th-if="${#fields.hasErrors('emailAddress')}" data-th-errors="*{emailAddress}" data-th-errorclass="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td>
+                    <input data-th-field="*{phoneNumber}"></input>
+                    <span data-th-if="${#fields.hasErrors('phoneNumber')}" data-th-errors="*{phoneNumber}" data-th-errorclass="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Home Address:</td>
+                <td>
+                    <input data-th-field="*{homeAddress}"></input>
+                    <span data-th-if="${#fields.hasErrors('homeAddress')}" data-th-errors="*{name}" data-th-errorclass="error"></span>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Add information</button>
+    </form>
+</body>
+</html>

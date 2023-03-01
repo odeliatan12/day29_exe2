@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>List of all the products</h3>
+    <table data-th-each="pl : ${productList}">
+        <tr>
+            <td><span data-th-text="${pl.name}"></span></td>
+            <td><span data-th-text="${pl.unitPrice}"></span></td>
+            <form
+                action="#"
+                data-th-action="@{/post/delete}"
+                method="post"
+            >
+                <input type="hidden" name="retailerId" data-th-value="${pl.retailerId}">
+                <input type="hidden" name="productId" data-th-value="${pl.productId}">
+                <input type="hidden" name="productName" data-th-value="${pl.name}">
+                <input type="hidden" name="unitPrice" data-th-value="${pl.unitPrice}">
+                <input type="hidden" name="quantity" data-th-value="${pl.quantity}">
+                <button type="submit">Delete</button>
+            </form>
+        </tr>
+    </table>
+    <form 
+        action="$"
+        method="post"
+        data-th-action="@{/post/postList}"
+    >
+        <button type="submit">Go to next page</button>
+    </form>
+</body>
+</html>
